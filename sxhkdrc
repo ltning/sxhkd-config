@@ -10,6 +10,8 @@ XF86MonBrightnessDown
 @Print
     gnome-screenshot -i
 
+XF86AudioMedia
+    apm | grep '^Remaining' | osd_cat -d 2 -p bottom -A center -c brightblue -s 3 -f '-adobe-*-*-r-*-*-36-*-*-*-*-*-*-*'
 
 XF86AudioMute
     . $HOME/.config/sxhkd/sxhkdrc.volmute
