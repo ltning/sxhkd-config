@@ -1,0 +1,21 @@
+ctrl+space
+    dmenu2_run &
+
+XF86MonBrightnessUp
+    . $HOME/.config/sxhkd/sxhkdrc.backlight_up
+
+XF86MonBrightnessDown
+    . $HOME/.config/sxhkd/sxhkdrc.backlight_down
+
+@Print
+    gnome-screenshot -i
+
+
+XF86AudioMute
+    . $HOME/.config/sxhkd/sxhkdrc.volmute
+
+XF86AudioLowerVolume
+    . $HOME/.config/sxhkd/sxhkdrc.voldown
+
+XF86AudioRaiseVolume
+    . $HOME/.config/sxhkd/sxhkdrc.volup

@@ -1,0 +1,23 @@
+#!/bin/sh
+if [ -f $HOME/.config/sxhkd/sxhkdrc.conf ] ; then
+    . $HOME/.config/sxhkd/sxhkdrc.conf
+fi
+backlight_incr="${backlight_incr:-2}"
+backlight_delay="${backlight_delay:-1}"
+backlight_color="${backlight_color:-yellow}"
+backlight_font="${backlight_font:--adobe-*-*-r-*-*-36-*-*-*-*-*-*-*}"
+
+if [ -f /tmp/osd_cat.pid ] ; then
+    pid=$(cat /tmp/osd_cat.pid) &&
+        rm -f /tmp/osd_cat.pid
+fi
+
+backlight incr $backlight_incr
+backlight=$(backlight | cut -f 2 -w)
+
+osd_cat -d $backlight_delay -p bottom -A center -c $backlight_color -s 3 -f "${backlight_font}" -T 'Backlight: up' -b percentage -P $backlight &
+echo $! > /tmp/osd_cat.pid
+sleep 0.05
+if [ "$pid" ] && ps $pid | grep -q osd_cat ; then
+    kill $pid 2>/dev/null
+fi
