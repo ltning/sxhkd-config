@@ -1,6 +1,9 @@
 ctrl+space
     dmenu2_run &
 
+ctrl+alt+l
+    xautolock -locknow
+
 XF86MonBrightnessUp
     . $HOME/.config/sxhkd/sxhkdrc.backlight_up
 
